@@ -1,0 +1,15 @@
+.container{
+    display: flex;
+    align-items: center;
+}
+.list{
+    list-style: none;
+    display: flex;
+}
+.item{
+    display: flex;
+    align-items: center;
+}
+.icon{
+    margin: 0 5px;
+}

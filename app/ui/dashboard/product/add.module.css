@@ -1,0 +1,180 @@
+.form{
+    display: flex;
+    flex-direction: column;
+    margin:0;
+    padding: 0;
+}
+.title{
+    margin-top: 20px;
+    font-weight: 200;
+    color: var(--textSoft);
+
+}
+.container{
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    margin-top: 20px;
+}
+.productImgContainer{
+    flex:1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    width: 300px;
+    height: 300px;
+    cursor: pointer;
+    border: 2px dashed var(--text);
+    background-color: var(--bgSoft);
+}
+.productImg{
+    object-fit: cover;
+    width: 200px;
+    height: 200px;
+    border-radius: 10px;
+}
+.uploadBtn{
+    width: 90%;
+    padding: 10px;
+    color: var(--text);
+    font-weight: 400;
+    background-color: var(--hoverSoft);
+    text-align: center;
+    margin: 10px 0;
+    border-radius: 10px;
+}
+.productInfo{
+    flex:4;
+    display:grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    background-color: var(--bgSoft);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.leftColumn{
+    grid-column: 1 / span 1;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.rightColumn{
+    grid-column: 2 / span 2;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.bottomColumn{
+    grid-column: 1 / span 2;
+    display: flex;
+    flex-direction: column;
+    gap: 0px;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-left: 20px;
+}
+
+.inputGroup{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background-color: var(--bg);
+    padding: 10px;
+    border-radius: 10px;
+    width: 100%;
+}
+.inputGroup > label{
+    color: var(--textSoft);
+}
+.inputGroup > input{
+    padding: 10px;
+    border-radius: 8px;
+    height: 40px;
+    font-size: 14px;
+    border: none;
+    outline: none;
+    background-color: #f2f2f2;
+}
+.inputGroup > select{
+    padding: 10px;
+    height: 40px;
+    font-size: 14px;
+    border-radius: 8px;
+    border: none;
+    outline: none;
+    background-color: #f2f2f2;
+}
+.inputGroup > textarea{
+    padding: 10px;
+    border-radius: 8px;
+    font-size: 14px;
+    border: none;
+    outline: none;
+    background-color: #f2f2f2;
+}
+.btns{
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+    margin-top: 20px;
+}
+.saveBtn{
+    width: 200px;
+    padding: 10px;
+    color: var(--text);
+    font-weight: 400;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 10px;
+    background-color: var(--hoverSoft);
+    text-align: center;
+    border:none;
+    outline: none;
+}
+.saveBtn:hover{
+    background-color: var(--bg);
+}
+.cancelBtn{
+    width: 200px;
+    padding: 10px;
+    color: var(--text);
+    font-weight: 400;
+    font-size: 14px;
+    cursor: pointer;
+    border-radius: 10px;
+    background-color: var(--hoverSoft);
+    text-align: center;
+    border:none;
+    outline: none;
+}
+.cancelBtn:hover{
+    background-color: var(--bg);
+}
+.errorContainer{
+    position:relative;
+    min-height: 40px;
+}
+.error{
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left:0;
+    color: var(--text);
+    padding: 10px 40px;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    background-color: var(--bgDangerSoft);
+}
+.errorIcon{
+    position: absolute;
+    top: 10px;
+    left:10px;
+    z-index: 1;
+}

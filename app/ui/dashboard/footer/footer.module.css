@@ -1,0 +1,23 @@
+.container{
+    display: flex;
+    justify-content: start;
+    align-items: center;
+    padding: 10px;
+    background-color: var(--bg);
+    margin-top: 40px;
+    width: 100%;
+}
+@media screen and (max-width: 1000px){
+    .container{
+        max-width: 100%;
+    }
+}
+.copyleft{
+    color: var(--textSoft);
+    font-size: 12px;
+    font-weight: 300;
+}
+.copyleftIcon{
+    display: inline-block;
+    transform: rotate(180deg);
+}

@@ -1,0 +1,98 @@
+.container{
+    background-color: var(--bgSoft);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+.title{
+    margin-bottom: 20px;
+    font-weight: 200;
+    color: var(--textSoft);
+}
+.table{
+    width: 100%;
+}
+
+.table td{
+    padding: 10px;
+}
+
+.product{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.productImg{
+    object-fit: container;
+    border-radius: 50%;
+}
+.productName{
+    font-weight: bold;
+}
+
+.status{
+    border-radius: 5px;
+    padding: 5px;
+    font-size: 14px;
+    color: var(--textDark);
+}
+
+.inactive{
+    background-color: #e9b949;
+    padding: 5px;
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: 5px;
+    color: var(--textDark);
+}
+.active{
+    padding: 5px;
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: 5px;
+    background-color: #6fcf97;
+    color: var(--textDark);
+}
+.deleted{
+    background-color: #ea8282;
+    padding: 5px;
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: 5px;
+    color: var(--textDark);
+}
+
+
+
+.viewBtn{
+    background-color: var(--hoverSoft);
+    padding: 5px;
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: 5px;
+    color: var(--text);
+    cursor: pointer;
+    border:none;
+    outline: none;
+    margin: 5px;
+}
+.deletedBtn{
+    background-color: var(--bgDanger);
+    padding: 5px;
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: 5px;
+    color: var(--text);
+    cursor: pointer;
+    border:none;
+    outline: none;
+    margin: 5px;
+}
+.deletedBtn:hover{
+    background-color: var(--bg);
+    color: var(--text);
+}
+.viewBtn:hover{
+    background-color: var(--bg);
+    color: var(--text);
+}

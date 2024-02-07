@@ -1,0 +1,22 @@
+.searchbar{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    background-color: var(--bg-soft);
+    justify-content: space-between;
+}
+.search{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background-color: var(--hoverSoft);;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.searchInput{
+    background-color: transparent;
+    border: none;
+    outline: none;
+    color: var(--text);
+}

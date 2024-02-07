@@ -1,0 +1,37 @@
+.container{
+    display: flex;
+    align-items: center;
+    
+    width: 130px;
+    padding: 5px;
+    border-radius: 10px;
+    background-color: var(--hoverSoft);
+}
+.select{
+    width: 100%;
+    padding: 5px;
+    border-radius: 10px;
+    color: var(--textSoft);
+    background-color: var(--hoverSoft);
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 300;
+    border: none;
+    outline: none;
+    appearance: none; /* Quitala apariencia nativa del select */
+    -moz-appearance: none;
+    -webkit-appearance: none;
+}
+/* Ajustar el icono */
+.select::-ms-expand {
+    display: none; /* Ocultar el icono predeterminado en Internet Explorer */
+}
+.select::-webkit-expand {
+    display: none; 
+}
+
+/* .select {
+    content: url('./dropdown_arrow.png');
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+} */
