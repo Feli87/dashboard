@@ -14,6 +14,8 @@ const Navbar = () => {
                 <div className={styles.search}>
                     <MdSearch/>
                     <input type="text" 
+                        name="search"
+                        id="search"
                         placeholder="Search..." 
                         className={styles.searchInput}
                     />

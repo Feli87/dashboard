@@ -1,7 +1,11 @@
 "use client"
 import styles from './chart.module.css'
 import { LineChart, Line, XAxis, YAxis, Tooltip, Legend, ResponsiveContainer } from 'recharts';
-
+const error = console.error;
+console.error = (...args) => {
+    if (/defaultProps/.test(args[0])) return;
+    error(...args);
+};
 const data = [
     {
         name: 'Monday',
@@ -56,8 +60,8 @@ const Chart = () => {
                     }}
                 >
                     {/* <CartesianGrid strokeDasharray="3 3" /> */}
-                    <XAxis dataKey="name" tick={{ fill: 'white' }} />
-                    <YAxis domain={[0, 9000]} tick={{ fill: 'white' }} type="number" allowDecimals={false} ticks={[ 1000, 2000, 3000, 4000, 5000, 6000, 7000, 8000, 9000, 10000]} />
+                    <XAxis dataKey="name" tick={{ fill: 'white' }} ticks={["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]} />
+                    <YAxis domain={[0, 9000]} tick={{ fill: 'white' }} type="number" allowDecimals={false} ticks={[1000, 2000, 3000, 4000, 5000, 6000, 7000, 8000, 9000, 10000]} />
                     <Tooltip contentStyle={{ backgroundColor: '#2e374a', border: 'none', borderRadius: '10px' }} />
                     <Legend />
                     <Line type="monotone" dataKey="visit" stroke="#8884d8" strokeDasharray="5 5" />

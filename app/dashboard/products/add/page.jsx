@@ -12,11 +12,13 @@ const AddProduct = () => {
     };
 
     return (
-        <form className={styles.form} encType="multipart/form-data" onSubmit={handleSubmit(onSubmit)}>
+        <form id='addproduct' name='addproduct' className={styles.form} encType="multipart/form-data" onSubmit={handleSubmit(onSubmit)}>
             <h2 className={styles.title}>Add new Product</h2>
             <div className={styles.container}>
                 <div className={styles.productImgContainer}>
                     <Image
+                        id='image'
+                        name='image'
                         src={'/noproduct.png'}
                         width={200}
                         height={200}
@@ -31,6 +33,8 @@ const AddProduct = () => {
                         <div className={styles.inputGroup}>
                             <label htmlFor="name">Name</label>
                             <input 
+                                id='name'
+                                name='name'
                                 type="text"
                                 {...register("name", { required: "Name is required" })}
                                 />
@@ -44,6 +48,8 @@ const AddProduct = () => {
                         <div className={styles.inputGroup}>
                             <label htmlFor="price">Price</label>
                             <input
+                                id='price'
+                                name='price'
                                 type="text"
                                 {...register("price", { required: "Price is required" })}
                             />
@@ -57,6 +63,8 @@ const AddProduct = () => {
                         <div className={styles.inputGroup}>
                             <label htmlFor="color">Color</label>
                             <input
+                                id='color'
+                                name='color'
                                 type="text"
                                 {...register("color", { required: "Color is required" })}
                             />
@@ -72,6 +80,8 @@ const AddProduct = () => {
                         <div className={styles.inputGroup}>
                             <label htmlFor="category">Category</label>
                             <select
+                                id='category'
+                                name='category'
                                 {...register("category", { required: "Category is required" })}
                             >
                                 <option value="">Select category</option>
@@ -88,6 +98,8 @@ const AddProduct = () => {
                         <div className={styles.inputGroup}>
                             <label htmlFor="stock">Stock</label>
                             <input
+                                id='stock'
+                                name='stock'
                                 type="text"
                                 {...register("stock", { required: "Stock is required" })}
                             />
@@ -100,7 +112,12 @@ const AddProduct = () => {
                         </div>
                         <div className={styles.inputGroup}>
                             <label htmlFor="size">Size</label>
-                            <input type="text" {...register("size", { required: "Size is required" })} />
+                            <input 
+                                id='size'
+                                name='size'
+                                type="text" 
+                                {...register("size", { required: "Size is required" })} 
+                            />
                             {errors.size && (
                                 <div className={styles.errorContainer}>
                                     <MdError className={styles.errorIcon} size={20} />
@@ -113,6 +130,8 @@ const AddProduct = () => {
                         <div className={styles.inputGroup}>
                             <label htmlFor="description">Description</label>
                             <textarea
+                                id='description'
+                                name='description'
                                 {...register("description", { required: "Description is required" })}
                                 cols="30"
                                 rows="10"

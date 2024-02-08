@@ -52,7 +52,7 @@
 .logout:hover{
     background-color: var(--hoverSoft);
 }
-@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap');
+
 .topLogo{
     display: flex;
     flex-direction: column;
@@ -61,12 +61,10 @@
     margin-bottom: 20px;
 }
 .logo{
-    font-family: 'Bebas Neue', sans-serif !important;
     font-size: 30px;
     color: var(--text);
 }
 .logoSpan{
-    font-family: 'Bebas Neue', sans-serif !important;
     font-size: 10px;
     color: var(--textSoft);
 }
