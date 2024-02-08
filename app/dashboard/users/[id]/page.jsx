@@ -1,11 +1,11 @@
 "use client";
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import styles from '@/app/ui/dashboard/users/add.module.css'
+import styles from '@/app/ui/dashboard/users/singleUserPage.module.css'
 import Image from 'next/image'
 import { MdError, MdRemoveCircle } from 'react-icons/md';
 
-const AddUser = () => {
+const SingleUserPage = () => {
     const [isDraggingOver, setIsDraggingOver] = useState(false);
     const [selectedImage, setSelectedImage] = useState(null); // Store selected image data
 
@@ -28,7 +28,18 @@ const AddUser = () => {
 
         setSelectedImage(URL.createObjectURL(selectedFile)); // Store selected file data
     };
-    const { register, handleSubmit, formState: { errors } } = useForm();
+
+    const { register, handleSubmit, formState: { errors } } = useForm({
+        defaultValues: {
+            name: "Default Name",
+            email: "default@example.com",
+            phone: "123456789",
+            role: "admin",
+            address: "Default Address",
+            country: "Default Country",
+            comments: "Default Comments"
+        }
+    });
 
     const onSubmit = (data) => {
         console.log(data); // Aquí puedes enviar los datos a través de una solicitud HTTP, por ejemplo.
@@ -44,7 +55,7 @@ const AddUser = () => {
 
     return (
         <form id='adduser' name='adduser' className={styles.form} encType="multipart/form-data" onSubmit={handleSubmit(onSubmit)}>
-            <h2 className={styles.title}>Add new User</h2>
+            <h2 className={styles.title}>Edit User</h2>
             <div className={styles.container}>
                 <div 
                     className={`${styles.userImgContainer} ${isDraggingOver ? styles.draggingOver : ''} `}  
@@ -215,4 +226,4 @@ const AddUser = () => {
         </form>
     )
 }
-export default AddUser
+export default SingleUserPage

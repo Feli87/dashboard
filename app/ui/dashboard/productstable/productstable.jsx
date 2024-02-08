@@ -44,10 +44,10 @@ const ProductsTable = () => {
                             45
                         </td>
                         <td align='center'>
-                            <Link href={'/dashboard/users/1'} className={styles.viewBtn}>
+                            <Link href={'/dashboard/products/1'} className={styles.viewBtn}>
                                 View
                             </Link>
-                            <Link href={'/dashboard/users/1/delete'} className={styles.deletedBtn}>
+                            <Link href={'/dashboard/products/1/delete'} className={styles.deletedBtn}>
                                 Delete
                             </Link>
                         </td>
@@ -79,10 +79,10 @@ const ProductsTable = () => {
                             45
                         </td>
                         <td align='center'>
-                            <Link href={'/dashboard/users/1'} className={styles.viewBtn}>
+                            <Link href={'/dashboard/products/1'} className={styles.viewBtn}>
                                 View
                             </Link>
-                            <Link href={'/dashboard/users/1/delete'} className={styles.deletedBtn}>
+                            <Link href={'/dashboard/products/1/delete'} className={styles.deletedBtn}>
                                 Delete
                             </Link>
                         </td>
@@ -114,10 +114,10 @@ const ProductsTable = () => {
                             45
                         </td>
                         <td align='center'>
-                            <Link href={'/dashboard/users/1'} className={styles.viewBtn}>
+                            <Link href={'/dashboard/products/1'} className={styles.viewBtn}>
                                 View
                             </Link>
-                            <Link href={'/dashboard/users/1/delete'} className={styles.deletedBtn}>
+                            <Link href={'/dashboard/products/1/delete'} className={styles.deletedBtn}>
                                 Delete
                             </Link>
                         </td>

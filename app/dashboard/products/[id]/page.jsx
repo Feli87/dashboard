@@ -1,11 +1,21 @@
 "use client";
 import { useForm } from 'react-hook-form';
-import styles from '@/app/ui/dashboard/product/add.module.css'
+import styles from '@/app/ui/dashboard/product/singleProductPage.module.css'
 import Image from 'next/image'
 import { MdError } from 'react-icons/md';
 
-const AddProduct = () => {
-    const { register, handleSubmit, formState: { errors } } = useForm();
+const SingleProductPage = () => {
+    const { register, handleSubmit, formState: { errors } } = useForm({
+        defaultValues: {
+            name: "Default Name",
+            price: "120",
+            color: "#000000",
+            category: "shoes",
+            stock: "40",
+            size: "30cm",
+            description: "Lorem insup site description default test lorem ipsum description default test"
+        }
+    });
 
     const onSubmit = (data) => {
         console.log(data); // Aquí puedes enviar los datos a través de una solicitud HTTP, por ejemplo.
@@ -13,7 +23,7 @@ const AddProduct = () => {
 
     return (
         <form id='addproduct' name='addproduct' className={styles.form} encType="multipart/form-data" onSubmit={handleSubmit(onSubmit)}>
-            <h2 className={styles.title}>Add new Product</h2>
+            <h2 className={styles.title}>Edit Product</h2>
             <div className={styles.container}>
                 <div className={styles.productImgContainer}>
                     <Image
@@ -154,4 +164,4 @@ const AddProduct = () => {
         </form>
     )
 }
-export default AddProduct
+export default SingleProductPage
