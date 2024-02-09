@@ -1,14 +1,15 @@
 import Image from 'next/image'
 import styles from './userstable.module.css'
 import Link from 'next/link'
+import { MdAdminPanelSettings, MdPerson } from 'react-icons/md'
 
-const UsersTable = () => {
+const UsersTable = ({ users }) => {
     return (
         <div className={styles.container}>
             <table className={styles.table}>
                 <thead>
                     <tr>
-                        <th align='left'>Name</th>
+                        <th align='left'>Username</th>
                         <th align='left'>Email</th>
                         <th align='left'>Created at</th>
                         <th align='center'>Role</th>
@@ -17,100 +18,48 @@ const UsersTable = () => {
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>
-                            <div className={styles.user}>
-                                <Image 
-                                    src={'/noavatar.png'} 
-                                    width={40} 
-                                    height={40} 
-                                    className={styles.userImg}
-                                    alt="user"
-                                />
-                                <span className={styles.userName}>Feli Doe</span>
-                            </div>
-                        </td>
-                        <td>
-                            8g5rP@example.com
-                        </td>
-                        <td>
-                            1 April, 2022
-                        </td>
-                        <td align='center'>
-                            Admin
-                        </td>
-                        <td align='center'>
-                            <span className={styles.active}>Active</span>
-                        </td>
-                        <td align='center'>
-                            <Link href={'/dashboard/users/1'} className={styles.viewBtn}>
-                                View
-                            </Link>
-                            <Link href={'/dashboard/users/1/delete'} className={styles.deletedBtn}>
-                                Delete
-                            </Link>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div className={styles.user}>
-                                <Image 
-                                    src={'/noavatar.png'} 
-                                    width={40} 
-                                    height={40} 
-                                    className={styles.userImg}
-                                    alt="user"
-                                />
-                                <span className={styles.userName}>Benjamin Doe</span>
-                            </div>
-                        </td>
-                        <td>
-                            8gsdasd5rP@example.com
-                        </td>
-                        <td>
-                            1 March, 2023
-                        </td>
-                        <td align='center'>
-                            User
-                        </td>
-                        <td align='center'>
-                            <span className={styles.inactive}>Inactive</span>
-                        </td>
-                        <td align='center'>
-                            <button className={styles.viewBtn}>View</button>
-                            <button className={styles.deletedBtn}>Delete</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <div className={styles.user}>
-                                <Image 
-                                    src={'/noavatar.png'} 
-                                    width={40} 
-                                    height={40} 
-                                    className={styles.userImg}
-                                    alt="user"
-                                />
-                                <span className={styles.userName}>Angel Doe</span>
-                            </div>
-                        </td>
-                        <td>
-                            123123@example.com
-                        </td>
-                        <td>
-                            3 June, 2024
-                        </td>
-                        <td align='center'>
-                            User
-                        </td>
-                        <td align='center'>
-                            <span className={styles.deleted}>Deleted</span>
-                        </td>
-                        <td align='center'>
-                            <button className={styles.viewBtn}>View</button>
-                            <button className={styles.deletedBtn}>Delete</button>
-                        </td>
-                    </tr>
+                    {users.map((user, index) => {
+                        return (
+                            <tr key={user.id || index}>
+                                <td>
+                                    <div className={styles.user}>
+                                        <Image
+                                            src={user.image || '/noavatar.png'}
+                                            width={40}
+                                            height={40}
+                                            className={styles.userImg}
+                                            alt="user"
+                                        />
+                                        <span className={styles.userName}>{user.username}</span>
+                                    </div>
+                                </td>
+                                <td>
+                                    {user.email}
+                                </td>
+                                <td>
+                                    {user.createdAt && new Date(user.createdAt).toLocaleDateString('en-US',{
+                                        day: 'numeric',
+                                        month: 'long',
+                                        year: 'numeric'
+                                    }) || ''}
+                                </td>
+                                <td align='center'>
+                                    {user.role && user.role === 'admin' ? <MdAdminPanelSettings size={30} /> : <MdPerson size={30} />}
+                                </td>
+                                <td align='center'>
+                                    <span className={user.isActive ? styles.active : styles.inactive}>{user.isActive ? 'Active' : 'Inactive'}</span>
+                                </td>
+                                <td align='center'>
+                                    <Link href={`/dashboard/users/${user.id}`} className={styles.viewBtn}>
+                                        View
+                                    </Link>
+                                    <Link href={`/dashboard/users/delete/${user.id}`} className={styles.deletedBtn}>
+                                        Delete
+                                    </Link>
+                                </td>
+                            </tr>
+                        )
+                    })}
                 </tbody>
             </table>
         </div>

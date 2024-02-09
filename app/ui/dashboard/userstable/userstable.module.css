@@ -62,14 +62,14 @@
 
 
 .viewBtn{
-    background-color: var(--hoverSoft);
+    background-color: var(--bgSuccessSoft);
     padding: 5px;
     font-size: 14px;
     font-weight: 500;
     border-radius: 5px;
     color: var(--text);
     cursor: pointer;
-    border:none;
+    border:1px solid transparent;
     outline: none;
     margin: 5px;
 }
@@ -81,15 +81,17 @@
     border-radius: 5px;
     color: var(--text);
     cursor: pointer;
-    border:none;
+    border:1px solid transparent;
     outline: none;
     margin: 5px;
 }
 .deletedBtn:hover{
     background-color: var(--bg);
+    border:1px solid var(--bgDanger);
     color: var(--text);
 }
 .viewBtn:hover{
     background-color: var(--bg);
+    border:1px solid var(--bgSuccessSoft);
     color: var(--text);
 }

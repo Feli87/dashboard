@@ -1,0 +1,75 @@
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.form{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    background-color: var(--bgSoft);
+    padding: 20px;
+    border-radius: 10px;
+    width: 400px;
+}
+
+.inputGroup{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10px;
+    background-color: var(--bg);
+    padding: 10px;
+    border-radius: 10px;
+    width: 100%;
+}
+.inputGroup > label{
+    color: var(--textSoft);
+}
+.inputGroup > input{
+    padding: 10px;
+    border-radius: 8px;
+    height: 40px;
+    font-size: 14px;
+    border: none;
+    outline: none;
+    background-color: #f2f2f2;
+}
+.loginBtn{
+    padding: 10px;
+    border-radius: 8px;
+    height: 40px;
+    font-size: 14px;
+    border: none;
+    outline: none;
+    background-color: #f2f2f2;
+    cursor: pointer;
+}
+
+.loginBtn:hover{
+    background-color: #e2e2e2;
+}
+.errorContainer{
+    position:relative;
+    min-height: 40px;
+}
+.error{
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left:0;
+    color: var(--text);
+    padding: 10px 40px;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 600;
+    background-color: var(--bgDangerSoft);
+}
+.errorIcon{
+    position: absolute;
+    top: 10px;
+    left:10px;
+    z-index: 1;
+}

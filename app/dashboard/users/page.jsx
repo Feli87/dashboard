@@ -3,7 +3,13 @@ import UsersTable from '../../ui/dashboard/userstable/userstable'
 import SearchDashboardBar from '../../ui/dashboard/searchdashboardbar/searchdashboardbar'
 import Link from 'next/link'
 import Pagination from '@/app/ui/dashboard/pagination/pagination'
-const Users = () => {
+import { fetchUsers } from '@/app/lib/data'
+const Users = async ({searchParams}) => {
+
+    const query = searchParams?.query || '';
+    const page = searchParams?.page || 1;
+    const {count, users} = await fetchUsers(query, page);
+
     return (
         <div className={styles.container}>
             <SearchDashboardBar
@@ -15,8 +21,8 @@ const Users = () => {
                     Add User
                 </Link>
             </SearchDashboardBar>
-            <UsersTable />
-            <Pagination />
+            <UsersTable users={users || []}/>
+            <Pagination count={count} />
         </div>
     )
 }

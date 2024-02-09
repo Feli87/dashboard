@@ -1,38 +1,41 @@
 "use client";
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import styles from '@/app/ui/login/loginpage.module.css';
+import styles from '@/app/ui/login/registerpage.module.css';
 import { MdError } from 'react-icons/md';
 
-const Login = () => {
-    const { register, handleSubmit, formState: { errors } } = useForm({
+const Register = () => {
+    const { register, handleSubmit, formState: { errors, isSubmitting }, watch } = useForm({
         defaultValues: {
             email: "default@example.com",
-            password: "password"
+            password: "password",
+            confirmPassword: "password"
         }
     });
 
+    const password = watch("password");
+
     const onSubmit = (data) => {
-        console.log(data); // Aquí puedes manejar la lógica de inicio de sesión
+        console.log(data); // Aquí puedes manejar la lógica de registro
     };
 
     return (
         <div className={styles.container}>
             <form className={styles.form} onSubmit={handleSubmit(onSubmit)}>
-                <h2 className={styles.title}>Sing in</h2>
+                <h2 className={styles.title}>Sing up</h2>
                 <div className={styles.inputGroup}>
                     <label>Email</label>
                     <input
                         id='email'
                         name='email'
                         type="email"
-                        {...register("email", { 
+                        {...register("email", {
                             required: "Email is required",
                             pattern: {
                                 value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
                                 message: "Invalid email address"
                             }
-                            })}
+                        })}
                     />
                     {errors.email && (
                         <div className={styles.errorContainer}>
@@ -43,17 +46,17 @@ const Login = () => {
                 </div>
                 <div className={styles.inputGroup}>
                     <label>Password</label>
-                    <input 
+                    <input
                         id='password'
                         name='password'
-                        type="password" 
-                        {...register('password', { 
+                        type="password"
+                        {...register('password', {
                             required: "Password is required",
                             pattern: {
                                 value: /^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{6,}$/,
                                 message: "Password must contain at least one letter and one number"
                             }
-                        })} 
+                        })}
                     />
                     {errors.password && (
                         <div className={styles.errorContainer}>
@@ -62,10 +65,29 @@ const Login = () => {
                         </div>
                     )}
                 </div>
-                <button className={styles.loginBtn} type="submit">Sing in</button>
+                <div className={styles.inputGroup}>
+                    <label>Confirm Password</label>
+                    <input
+                        id='confirmPassword'
+                        name='confirmPassword'
+                        type="password"
+                        {...register('confirmPassword', {
+                            required: "Confirm password is required",
+                            validate: value => value === password || "The passwords do not match"
+                        })}
+                    />
+                    {errors.confirmPassword && (
+                        <div className={styles.errorContainer}>
+                            <MdError className={styles.errorIcon} size={20} />
+                            <p className={styles.error}>{errors.confirmPassword.message}</p>
+                        </div>
+                    )}
+                </div>
+                <button className={styles.loginBtn} type="submit" disabled={isSubmitting}>Sing up</button>
             </form>
         </div>
     );
 };
 
-export default Login;
+export default Register;
+

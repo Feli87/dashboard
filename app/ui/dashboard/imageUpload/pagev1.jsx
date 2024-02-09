@@ -1,51 +1,15 @@
-'use client'
-import { useState, useEffect } from 'react';
+"use client";
+import { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import styles from '@/app/ui/dashboard/users/singleUserPage.module.css'
+import styles from '@/app/ui/dashboard/users/add.module.css'
 import Image from 'next/image'
 import { MdError, MdRemoveCircle } from 'react-icons/md';
+import { adduser } from '@/app/lib/actions';
 
-const SingleUserPage = ({params}) => {
-
+const AddUser = () => {
     const [isDraggingOver, setIsDraggingOver] = useState(false);
     const [selectedImage, setSelectedImage] = useState(null); // Store selected image data
-    const { id } = params
-    const { register, handleSubmit, formState: { errors }, setValue } = useForm({
-        defaultValues: {
-            username: "Default Name",
-            email: "default@example.com",
-            phone: "123456789",
-            role: "admin",
-            address: "Default Address",
-            country: "Default Country",
-            comments: "Default Comments"
-        }
-    });
-    useEffect(() => {
-        var myHeaders = new Headers();
-        var requestOptions = {
-        method: 'POST',
-        headers: myHeaders,
-        redirect: 'follow'
-        };
 
-        fetch(`/api/users/${id}`, requestOptions)
-        .then(response => response.text())
-        .then(result => {
-            setValue('username', JSON.parse(result).username)
-            setValue('email', JSON.parse(result).email)
-            setValue('role', JSON.parse(result).role)
-            setValue('image', JSON.parse(result).image)
-            setValue('password', JSON.parse(result).password)
-            setValue('id', JSON.parse(result).id)
-            setValue('status', JSON.parse(result).status)
-            setValue('phone', JSON.parse(result).phone)
-            setValue('address', JSON.parse(result).address)
-            setValue('country', JSON.parse(result).country)
-            setValue('comments', JSON.parse(result).comments)
-        })
-        .catch(error => console.log('error', error));
-    },[id, setValue])
     // Handle file selection
     const handleFileChange = (event) => {
         console.log("🚀 ~ handleFileChange ~ event:", event.target.files[0])
@@ -65,11 +29,11 @@ const SingleUserPage = ({params}) => {
 
         setSelectedImage(URL.createObjectURL(selectedFile)); // Store selected file data
     };
-
- 
+    const { register, handleSubmit, formState: { errors } } = useForm();
 
     const onSubmit = (data) => {
         console.log(data); // Aquí puedes enviar los datos a través de una solicitud HTTP, por ejemplo.
+        adduser(data);
     };
     // Handle drop event
     const handleDrop = (event) => {
@@ -82,7 +46,7 @@ const SingleUserPage = ({params}) => {
 
     return (
         <form id='adduser' name='adduser' className={styles.form} encType="multipart/form-data" onSubmit={handleSubmit(onSubmit)}>
-            <h2 className={styles.title}>Edit User {id}</h2>
+            <h2 className={styles.title}>Add new User</h2>
             <div className={styles.container}>
                 <div 
                     className={`${styles.userImgContainer} ${isDraggingOver ? styles.draggingOver : ''} `}  
@@ -126,17 +90,17 @@ const SingleUserPage = ({params}) => {
                 <div className={styles.userInfo}>
                     <div className={styles.leftColumn}>
                         <div className={styles.inputGroup}>
-                            <label htmlFor="username">Full Name</label>
+                            <label htmlFor="name">Full Name</label>
                             <input
-                                id='username'
-                                name='username'
+                                id='name'
+                                name='name'
                                 type="text"
-                                {...register("username", { required: "Full Name is required" })}
+                                {...register("name", { required: "Full Name is required" })}
                             />
-                            {errors.username && (
+                            {errors.name && (
                                 <div className={styles.errorContainer}>
                                     <MdError className={styles.errorIcon} size={20} />
-                                    <p className={styles.error}>{errors.username.message}</p>
+                                    <p className={styles.error}>{errors.name.message}</p>
                                 </div>
                             )}
                         </div>
@@ -253,4 +217,4 @@ const SingleUserPage = ({params}) => {
         </form>
     )
 }
-export default SingleUserPage
+export default AddUser

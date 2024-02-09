@@ -2,7 +2,7 @@
     display: flex;
     align-items: center;
     gap: 20px;
-    justify-content: space-between;
+    justify-content: center;
     /* background-color: var(--bgSoft); */
     padding: 20px;
     border-radius: 10px;
@@ -13,19 +13,26 @@
     background-color: var(--hoverSoft);
     color: var(--text);
     cursor: pointer;
-    border: none;
+    border: 1px solid transparent;
     outline: none;
+    width: 80px;
+    height: 40px;
+    font-size: 14px;
 }
 
 .paginationBtn:hover{
     background-color: var(--bg);
+    border: 1px solid var(--hoverSoft);
 }
 .paginationBtn:disabled{
-    background-color: var(--hoverSoft);
+    background-color: var(--bgSoft);
     color: var(--textSoft);
     cursor: not-allowed;
 }
 .paginationCount{
+    padding: 10px;
+    border-radius: 10px;
+    /* background-color: var(--hoverSoft); */
     color: var(--textSoft);
     font-size: 14px;
     font-weight: 300;
