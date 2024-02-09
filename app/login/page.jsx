@@ -1,7 +1,7 @@
 "use client";
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import styles from '@/app/ui/login/loginpage.module.css';
+import styles from '../ui/login/loginpage.module.css';
 import { MdError } from 'react-icons/md';
 
 const Login = () => {
