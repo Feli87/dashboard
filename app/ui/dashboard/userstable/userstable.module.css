@@ -34,15 +34,17 @@
     color: var(--textDark);
 }
 
-.inactive{
+.userInactive{
     background-color: #e9b949;
     padding: 5px;
     font-size: 14px;
     font-weight: 500;
     border-radius: 5px;
     color: var(--textDark);
+    width: 70px;
 }
-.active{
+.userActive{
+    width: 70px;
     padding: 5px;
     font-size: 14px;
     font-weight: 500;
@@ -57,11 +59,12 @@
     font-weight: 500;
     border-radius: 5px;
     color: var(--textDark);
+    width: 70px;
 }
 
 
 
-.viewBtn{
+.editUserBtn{
     background-color: var(--bgSuccessSoft);
     padding: 5px;
     font-size: 14px;
@@ -72,6 +75,8 @@
     border:1px solid transparent;
     outline: none;
     margin: 5px;
+    width: 80px;
+    height: 30px;
 }
 .deletedBtn{
     background-color: var(--bgDanger);
@@ -84,13 +89,15 @@
     border:1px solid transparent;
     outline: none;
     margin: 5px;
+    width: 80px;
+    height: 30px;
 }
 .deletedBtn:hover{
     background-color: var(--bg);
     border:1px solid var(--bgDanger);
     color: var(--text);
 }
-.viewBtn:hover{
+.editUserBtn:hover{
     background-color: var(--bg);
     border:1px solid var(--bgSuccessSoft);
     color: var(--text);

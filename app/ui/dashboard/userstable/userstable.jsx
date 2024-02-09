@@ -47,14 +47,19 @@ const UsersTable = ({ users }) => {
                                     {user.role && user.role === 'admin' ? <MdAdminPanelSettings size={30} /> : <MdPerson size={30} />}
                                 </td>
                                 <td align='center'>
-                                    <span className={user.isActive ? styles.active : styles.inactive}>{user.isActive ? 'Active' : 'Inactive'}</span>
+                                    <div className={user.isActive ? styles.userActive : styles.userInactive}>{user.isActive ? 'Active' : 'Inactive'}</div>
                                 </td>
                                 <td align='center'>
-                                    <Link href={`/dashboard/users/${user.id}`} className={styles.viewBtn}>
-                                        View
+                                    <Link 
+                                    href={`/dashboard/users/${user.id}`}  >
+                                        <button className={styles.editUserBtn}>
+                                            Edit
+                                        </button>
                                     </Link>
-                                    <Link href={`/dashboard/users/delete/${user.id}`} className={styles.deletedBtn}>
-                                        Delete
+                                    <Link href={`/dashboard/users/delete/${user.id}`}>
+                                        <button className={styles.deletedBtn}>
+                                            Delete
+                                        </button>
                                     </Link>
                                 </td>
                             </tr>

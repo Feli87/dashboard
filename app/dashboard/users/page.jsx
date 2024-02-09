@@ -2,8 +2,8 @@ import styles from '../../ui/dashboard/users.module.css'
 import UsersTable from '../../ui/dashboard/userstable/userstable'
 import SearchDashboardBar from '../../ui/dashboard/searchdashboardbar/searchdashboardbar'
 import Link from 'next/link'
-import Pagination from '@/app/ui/dashboard/pagination/pagination'
-import { fetchUsers } from '@/app/lib/data'
+import Pagination from '../../ui/dashboard/pagination/pagination'
+import { fetchUsers } from '../../lib/data'
 const Users = async ({searchParams}) => {
 
     const query = searchParams?.query || '';

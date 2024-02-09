@@ -1,9 +1,9 @@
-import styles from '@/app/ui/dashboard/products.module.css'
-import SearchDashboardBar from '@/app/ui/dashboard/searchdashboardbar/searchdashboardbar'
+import styles from '../../ui/dashboard/products.module.css'
+import SearchDashboardBar from '../../ui/dashboard/searchdashboardbar/searchdashboardbar'
 import Link from 'next/link'
-import Pagination from '@/app/ui/dashboard/pagination/pagination'
-import ProductsTable from '@/app/ui/dashboard/productstable/productstable'
-import { fetchProducts } from '@/app/lib/data'
+import Pagination from '../../ui/dashboard/pagination/pagination'
+import ProductsTable from '../../ui/dashboard/productstable/productstable'
+import { fetchProducts } from '../../lib/data'
 const Products = async  ({searchParams}) => {
 
     const query = searchParams?.query || '';

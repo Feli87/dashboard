@@ -1,6 +1,6 @@
 "use client";
 import { useForm } from 'react-hook-form';
-import styles from '@/app/ui/dashboard/product/singleProductPage.module.css'
+import styles from '../../../ui/dashboard/product/singleProductPage.module.css'
 import Image from 'next/image'
 import { MdError } from 'react-icons/md';
 

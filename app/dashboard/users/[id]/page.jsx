@@ -1,27 +1,28 @@
 'use client'
 import { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
-import styles from '@/app/ui/dashboard/users/singleUserPage.module.css'
+import styles from '../../../ui/dashboard/users/singleUserPage.module.css'
 import Image from 'next/image'
 import { MdError, MdRemoveCircle } from 'react-icons/md';
 
 const SingleUserPage = ({params}) => {
-
+    const [isLoading, setIsLoading] = useState(true);
     const [isDraggingOver, setIsDraggingOver] = useState(false);
     const [selectedImage, setSelectedImage] = useState(null); // Store selected image data
     const { id } = params
     const { register, handleSubmit, formState: { errors }, setValue } = useForm({
         defaultValues: {
-            username: "Default Name",
-            email: "default@example.com",
-            phone: "123456789",
-            role: "admin",
-            address: "Default Address",
-            country: "Default Country",
-            comments: "Default Comments"
+            username: "loading...",
+            email: "loading...",
+            phone: "loading...",
+            role: "loading...",
+            address: "loading...",
+            country: "loading...",
+            comments: "loading..."
         }
     });
     useEffect(() => {
+        setIsLoading(true);
         var myHeaders = new Headers();
         var requestOptions = {
         method: 'POST',
@@ -43,6 +44,7 @@ const SingleUserPage = ({params}) => {
             setValue('address', JSON.parse(result).address)
             setValue('country', JSON.parse(result).country)
             setValue('comments', JSON.parse(result).comments)
+            setIsLoading(false);
         })
         .catch(error => console.log('error', error));
     },[id, setValue])
@@ -66,7 +68,6 @@ const SingleUserPage = ({params}) => {
         setSelectedImage(URL.createObjectURL(selectedFile)); // Store selected file data
     };
 
- 
 
     const onSubmit = (data) => {
         console.log(data); // Aquí puedes enviar los datos a través de una solicitud HTTP, por ejemplo.
@@ -126,13 +127,15 @@ const SingleUserPage = ({params}) => {
                 <div className={styles.userInfo}>
                     <div className={styles.leftColumn}>
                         <div className={styles.inputGroup}>
-                            <label htmlFor="username">Full Name</label>
-                            <input
-                                id='username'
-                                name='username'
-                                type="text"
-                                {...register("username", { required: "Full Name is required" })}
-                            />
+                        <label htmlFor="username">Full Name</label>
+                        <input
+                            id='username'
+                            name='username'
+                            disabled={isLoading}
+                            type="text"
+                            {...register("username", { required: "Full Name is required" })}
+                        />
+                            
                             {errors.username && (
                                 <div className={styles.errorContainer}>
                                     <MdError className={styles.errorIcon} size={20} />
@@ -142,10 +145,12 @@ const SingleUserPage = ({params}) => {
                         </div>
                         <div className={styles.inputGroup}>
                             <label htmlFor="price">Email</label>
+                            
                             <input
                                 id='email'
                                 name='email'
                                 type="email"
+                                disabled={isLoading}
                                 {...register("email", { 
                                     required: "Email is required",
                                     pattern: {
@@ -166,6 +171,7 @@ const SingleUserPage = ({params}) => {
                             <input
                                 id='phone'
                                 name='phone'
+                                disabled={isLoading}
                                 type="text"
                                 {...register("phone", { required: "Phone is required" })}
                             />
@@ -181,6 +187,7 @@ const SingleUserPage = ({params}) => {
                         <div className={styles.inputGroup}>
                             <label htmlFor="category">Role</label>
                             <select
+                                disabled={isLoading}
                                 id='role'
                                 name='role'
                                 {...register("role", { required: "Role is required" })}
@@ -199,6 +206,7 @@ const SingleUserPage = ({params}) => {
                         <div className={styles.inputGroup}>
                             <label htmlFor="stock">Address</label>
                             <input
+                                disabled={isLoading}
                                 id='address'
                                 name='address'
                                 type="text"
@@ -214,6 +222,7 @@ const SingleUserPage = ({params}) => {
                         <div className={styles.inputGroup}>
                             <label htmlFor="size">Country</label>
                             <input
+                                disabled={isLoading}
                                 id='country'
                                 name='country'
                                 type="text" {...register("country", { required: "Country is required" })} />
@@ -229,6 +238,7 @@ const SingleUserPage = ({params}) => {
                         <div className={styles.inputGroup}>
                             <label htmlFor="description">Comments</label>
                             <textarea
+                                disabled={isLoading}
                                 id='comments'
                                 name='comments'
                                 {...register("comments", { required: "Comments is required" })}
